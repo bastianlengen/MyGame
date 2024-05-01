@@ -1,0 +1,112 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "data/levels/test.tmx",
+    "expandedProjectPaths": [
+        ".idea/inspectionProfiles",
+        ".",
+        "data/tilesets",
+        "data",
+        "data/levels"
+    ],
+    "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
+    "fileStates": {
+        "C:/Users/basti/Desktop/-Game/data/levels/omni.tmx": {
+            "scale": 0.22414062499999998,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 843.2206343673754,
+                "y": 1066.2948762635067
+            }
+        },
+        "C:/Users/basti/Desktop/-Game/data/tilesets/enemies.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/basti/Desktop/-Game/data/tilesets/extra.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/basti/Desktop/-Game/data/tilesets/grass.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/basti/Desktop/-Game/data/tilesets/inside.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/basti/Desktop/-Game/data/tilesets/items.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/basti/Desktop/-Game/data/tilesets/objects.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "C:/Users/basti/Desktop/-Game/data/tilesets/outside.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/basti/Desktop/-Game/data/tilesets/platforms.tsx": {
+            "scaleInDock": 1
+        },
+        "data/levels/test.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 0.29885416666666664,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 933.5657023353087,
+                "y": 173.99790867898218
+            }
+        },
+        "data/levels/test.tmx#objects": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "data/tilesets/Objects.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "data/tilesets/grass.tsx": {
+            "scaleInDock": 1
+        },
+        "data/tilesets/inside.tsx": {
+            "scaleInDock": 1
+        },
+        "data/tilesets/objects.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "data/tilesets/outside.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "data/tilesets/platforms.tsx": {
+            "scaleInDock": 1
+        }
+    },
+    "last.externalTilesetPath": "C:/Users/basti/Desktop/myGame/data/tilesets",
+    "last.imagePath": "C:/Users/basti/Desktop/myGame/graphics/player/idle",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "openFiles": [
+        "data/levels/test.tmx"
+    ],
+    "project": "sans titre.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "data/levels/test.tmx",
+        "C:/Users/basti/Desktop/-Game/data/levels/omni.tmx",
+        "data/tilesets/outside.tsx",
+        "data/tilesets/objects.tsx",
+        "data/tilesets/Objects.tsx"
+    ],
+    "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    },
+    "tileset.type": 1
+}
