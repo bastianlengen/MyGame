@@ -19,6 +19,7 @@ class Level():
         if bg_type == 'forest_night':
             bg_tiles_dict = level_frames['forest_night']
             bg_tiles_dict['stars'] = level_frames['stars']
+            bg_tiles_dict['shooting_stars'] = level_frames['shooting_stars']
         else:
             bg_tiles_dict = None
         self.all_sprites = AllSprites(

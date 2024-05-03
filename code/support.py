@@ -51,7 +51,7 @@ def import_tilemap(cols, rows, *path):
             cutout_rect = pygame.Rect(col * cell_width, row * cell_height, cell_width, cell_height)  # l,t,w,h
             cutout_surf = pygame.Surface((cell_width, cell_height))
             cutout_surf.fill('green')  # Fill the background
-            cutout_surf.set_colorkey('green')  # Ignore all grind pixels
+            cutout_surf.set_colorkey('green')  # Ignore all green pixels
             cutout_surf.blit(surf, (0, 0), cutout_rect)
             frames[(col, row)] = cutout_surf
     return frames
@@ -60,3 +60,13 @@ def import_images_from_spritesheet(cols, rows, *path, name=''):
     frames = import_tilemap(cols, rows, *path)
     frames = {f'{name}{i}': value for i, (key, value) in enumerate(frames.items())}
     return frames
+
+def import_animations_from_spritsheets(cols, rows, row_names, *path):
+    frames = import_tilemap(cols, rows, *path)
+    new_frames = {}
+    for i in range(rows):
+        tmp = {}
+        for j in range(cols):
+            tmp[j] = frames[(j, i)]
+        new_frames[f'{row_names[i]}'] = tmp
+    return new_frames

@@ -39,7 +39,9 @@ class Game():
         self.level_frames = {
             'forest_night': import_folder_dict('graphics', 'background', 'forest_night'),
             'player': import_sub_folders('graphics', 'player'),
-            'stars': import_images_from_spritesheet(4,2, 'graphics', 'background','stars','stars', name='star')
+            'stars': import_images_from_spritesheet(4,2, 'graphics', 'background','stars','stars', name='star'),
+            'shooting_stars': import_animations_from_spritsheets(3,2, ['shooting_star_red', 'shooting_star_yellow'],
+                                                                 'graphics', 'background','stars', 'shooting_stars'),
         }
 
     def switch_stage(self, target, unlock = 0):
@@ -53,7 +55,7 @@ class Game():
     def run(self):
         while True:
             # Store the time between 2 images to normalize the speed of the movement
-            dt = self.clock.tick() / 1000
+            dt = self.clock.tick(60) / 1000
 
             # Go through the events
             for event in pygame.event.get():

@@ -1,8 +1,9 @@
 import pygame
 
 from settings import *
-from sprites import Sprite
+from sprites import ShootingStarSprite
 from random import choice, uniform
+from timer import Timer
 
 class AllSprites(pygame.sprite.Group):
     def __init__(self, width, height, horizon_line, bg_type, bg_tiles_dict=None, top_limit=0):
@@ -27,8 +28,14 @@ class AllSprites(pygame.sprite.Group):
         self.bg_tiles_dict = bg_tiles_dict
         self.horizon_line = horizon_line
         if bg_type in ['forest_night']:
-            self.bg_tile_direction = -1
+            # Trees
             self.bg_tiles_x = [0] * len(self.bg_tiles_dict)
+            # Stars
+            self.n_stars = 75
+            self.distance_min_stars = 75
+            self.star_x_speed_ratio = 3  # 1/3 of the speed of the camera
+            # Shooting stars
+            self.timer_shooting_stars = Timer(100)
 
 
     def camera_constraint(self):
@@ -59,6 +66,7 @@ class AllSprites(pygame.sprite.Group):
 
             # Draw stars
             self.draw_random_stars(self.bg_tiles_dict['stars'])
+            self.create_random_shooting_stars(self.bg_tiles_dict['shooting_stars'])
 
             # Draw trees
             self.draw_bg_large_tile(0, self.bg_tiles_dict['back_trees'])
@@ -84,22 +92,20 @@ class AllSprites(pygame.sprite.Group):
     def draw_random_stars(self, surfs):
         # Draw the random keys and positions if not already done
         if not hasattr(self, 'stars_surf'):
-            n_stars = 75
-            distance_min_stars = 75
             self.stars_pos = []
             self.stars_surf = []
-            for i in range(n_stars):
+            for i in range(self.n_stars):
                 too_close = True
                 while too_close:
                     # Draw
                     x = uniform(0, WINDOW_WIDTH)
                     y = uniform(-100, self.horizon_line - 100)
                     key = choice(list(surfs.keys()))
-                    alpha = uniform(20, 180)
+                    alpha = uniform(20, 220)
                     scale = uniform(0.5, 1)
                     too_close = False
                     for existing_pos in self.stars_pos:
-                        if (abs(x - existing_pos[0]) + abs(y - existing_pos[1])) < distance_min_stars:
+                        if (abs(x - existing_pos[0]) + abs(y - existing_pos[1])) < self.distance_min_stars:
                             too_close = True
                             break
                 # Modify the surface and save it
@@ -114,8 +120,23 @@ class AllSprites(pygame.sprite.Group):
 
         # Draw the stars
         for ((x,y), star_surf) in zip(self.stars_pos, self.stars_surf):
-            star_rect = star_surf.get_frect(center=(x,y + self.offset.y))
+            if x + self.offset.x/self.star_x_speed_ratio < 0:
+                x += WINDOW_WIDTH
+            star_rect = star_surf.get_frect(center=(x + self.offset.x/self.star_x_speed_ratio,y + self.offset.y))
             self.display_surface.blit(star_surf, star_rect)
+
+
+    def create_random_shooting_stars(self, frames):
+        self.timer_shooting_stars.update()
+        if not self.timer_shooting_stars.active:
+            key = choice(list(frames.keys())+[None,None])
+            if key:
+                y = -self.borders['top']
+                x = uniform(0, self.width)
+                ShootingStarSprite( pos = (x, y),
+                                    frames = frames[key],
+                                    groups = self)
+            self.timer_shooting_stars.activate()
 
 
     def draw(self, target_pos, dt):  # Overwrite the basic draw method for sprite.Group()

@@ -8,8 +8,8 @@
         ".idea/inspectionProfiles",
         ".",
         "data/tilesets",
-        "data",
-        "data/levels"
+        "data/levels",
+        "data"
     ],
     "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
@@ -54,7 +54,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 933.5657023353087,
-                "y": 173.99790867898218
+                "y": 170.65179505054016
             }
         },
         "data/levels/test.tmx#objects": {
