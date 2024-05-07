@@ -5,6 +5,8 @@ from settings import *
 from support import *
 from data import Data
 from level import Level
+from debug import debug
+from ui import UI
 
 class Game():
     def __init__(self):
@@ -20,8 +22,8 @@ class Game():
         self.import_assets()
 
         # Import data
-        # TODO
-        self.data = Data(None) # Data(self.ui)
+        self.ui = UI(self.font, self.ui_frames)
+        self.data = Data(self.ui)
 
         # Import UI:
         # TODO
@@ -37,11 +39,16 @@ class Game():
 
     def import_assets(self):
         self.level_frames = {
-            'forest_night': import_folder_dict('graphics', 'background', 'forest_night'),
             'player': import_sub_folders('graphics', 'player'),
+            'forest_night': import_folder_dict('graphics', 'background', 'forest_night'),
             'stars': import_images_from_spritesheet(4,2, 'graphics', 'background','stars','stars', name='star'),
             'shooting_stars': import_animations_from_spritsheets(3,2, ['shooting_star_red', 'shooting_star_yellow'],
                                                                  'graphics', 'background','stars', 'shooting_stars'),
+        }
+        self.font = pygame.font.Font(join( 'graphics', 'ui', 'runescape_uf.ttf'), 40)
+        self.ui_frames = {
+            'heart': import_image('graphics', 'ui', 'heart'),
+            'duck': import_image('graphics', 'ui', 'duck'),
         }
 
     def switch_stage(self, target, unlock = 0):
@@ -70,7 +77,10 @@ class Game():
             self.current_stage.run(dt)
 
             # Update UI
-            # TODO
+            self.ui.update(self.data)
+
+            # Debug
+            # debug(dt)
 
             # Update what's on screen
             pygame.display.update()

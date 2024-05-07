@@ -5,11 +5,11 @@
     },
     "activeFile": "data/levels/test.tmx",
     "expandedProjectPaths": [
-        ".idea/inspectionProfiles",
-        ".",
-        "data/tilesets",
         "data/levels",
-        "data"
+        "data/tilesets",
+        ".",
+        "data",
+        ".idea/inspectionProfiles"
     ],
     "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
@@ -46,15 +46,26 @@
         "C:/Users/basti/Desktop/-Game/data/tilesets/platforms.tsx": {
             "scaleInDock": 1
         },
+        "data/levels/1.tmx": {
+            "scale": 0.19247395833333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1922.3379786226492,
+                "y": 1283.2904884318768
+            }
+        },
+        "data/levels/1.tmx#objects": {
+            "scaleInDock": 1
+        },
         "data/levels/test.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.29885416666666664,
-            "selectedLayer": 2,
+            "scale": 0.75,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 933.5657023353087,
-                "y": 170.65179505054016
+                "x": 893.3333333333333,
+                "y": 763.9999999999999
             }
         },
         "data/levels/test.tmx#objects": {
@@ -86,19 +97,21 @@
         }
     },
     "last.externalTilesetPath": "C:/Users/basti/Desktop/myGame/data/tilesets",
-    "last.imagePath": "C:/Users/basti/Desktop/myGame/graphics/player/idle",
+    "last.imagePath": "C:/Users/basti/Desktop/myGame/graphics/tilesets",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
     "openFiles": [
-        "data/levels/test.tmx"
+        "data/levels/test.tmx",
+        "data/tilesets/outside.tsx"
     ],
     "project": "sans titre.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "data/levels/test.tmx",
-        "C:/Users/basti/Desktop/-Game/data/levels/omni.tmx",
         "data/tilesets/outside.tsx",
+        "data/levels/test.tmx",
+        "data/levels/1.tmx",
+        "C:/Users/basti/Desktop/-Game/data/levels/omni.tmx",
         "data/tilesets/objects.tsx",
         "data/tilesets/Objects.tsx"
     ],
@@ -108,5 +121,5 @@
         "height": 64,
         "width": 64
     },
-    "tileset.type": 1
+    "tileset.type": 0
 }

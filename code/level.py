@@ -105,9 +105,8 @@ class Level():
             self.player.hitbox_rect.right = self.level_width
 
         # Bottom border
-        if self.player.hitbox_rect.bottom >= self.level_bottom:
-            # TODO
-            print('Death')
+        if self.player.hitbox_rect.top >= self.level_bottom:
+            self.player.respawn_death()
 
         # Success state, i.e. reached the flag
         # TODO

@@ -1,6 +1,7 @@
 from settings import *
 from timer import Timer
 from math import sin
+from collections import deque
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, groups, collision_sprites, semi_collision_sprites, frames, data):
@@ -32,10 +33,11 @@ class Player(pygame.sprite.Sprite):
         self.semi_collision_sprites = semi_collision_sprites
         self.on_surface = {'floor': False, 'left': False, 'right': False}
         self.platform = None
+        self.last_positions_on_floor = deque(maxlen=10)
 
         # Timer
         self.timers = {
-            'wall jump': Timer(200),
+            'wall jump': Timer(100),
             'wall slide block': Timer(250),
             'platform skip': Timer(100),
             'attack block': Timer(500),
@@ -99,7 +101,9 @@ class Player(pygame.sprite.Sprite):
                 self.timers['wall slide block'].activate()
                 self.hitbox_rect.bottom -= 1  # To make sure you can jump on a moving platform moving downward
             elif any((self.on_surface['left'], self.on_surface['right'])) and not self.timers['wall slide block'].active:
-                self.timers['wall jump'].activate()
+                if not self.timers['wall jump'].active:
+                    self.timers['wall jump'].activate()
+                    self.facing_right = not self.facing_right
                 self.direction.y = -self.jump_height
                 self.direction.x = 1 if self.on_surface['left'] else -1
             self.jump = False
@@ -132,10 +136,13 @@ class Player(pygame.sprite.Sprite):
 
         # Check at each iteration if we are on a platform
         self.platform = None
-        sprites = self.collision_sprites.sprites() + self.semi_collision_sprites.sprites() # .sprites() makes a list
+        sprites = self.collision_sprites.sprites() + self.semi_collision_sprites.sprites()  # .sprites() makes a list
         for sprite in [sprite for sprite in sprites if hasattr(sprite, 'moving')]:
             if sprite.rect.colliderect(floor_rect):
                 self.platform = sprite
+
+        # Save the last position if we touch the ground:
+        if self.on_surface['floor']: self.last_positions_on_floor.append(self.rect.topleft)
 
 
     def collision(self, axis):
@@ -217,6 +224,13 @@ class Player(pygame.sprite.Sprite):
             white_surf = white_mask.to_surface()
             white_surf.set_colorkey('black')
             self.image = white_surf
+
+    def respawn_death(self):
+        if not self.timers['hit'].active:
+            self.hitbox_rect.topleft = self.last_positions_on_floor[0]
+            self.direction = vector()
+            self.get_damage()
+            self.timers['wall jump'].activate()
 
 
     def update(self, dt):

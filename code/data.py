@@ -1,30 +1,21 @@
 class Data:
     def __init__(self, ui):
         # Private attributes
-        self._coins = 0
+        self._ducks = 0
         self._health = 5
 
         # UI
-        ''' self.ui = ui '''
-        '''self.ui.create_hearts(self._health)'''
+        self.ui = ui 
 
-        # Overworld
-        '''
-        self.unlocked_level = 0
-        self.current_level = 0
-        '''
 
     @property
-    def coins(self):
-        return self._coins
+    def ducks(self):
+        return self._ducks
 
-    @coins.setter
-    def coins(self,value):
-        self._coins = value
-        if self.coins >= 100:
-            self.coins -= 100
-            self.health += 1
-        self.ui.show_coins(self.coins)
+    @ducks.setter
+    def ducks(self,value):
+        self._ducks = value
+        #self.ui.draw_ducks(self.ducks)
 
     @property
     def health(self):
@@ -33,8 +24,6 @@ class Data:
     @health.setter
     def health(self, value):
         self._health = value
-        '''
-        self.ui.create_hearts(self.health)
-        '''
+        #self.ui.draw_hearts(self.health)
 
 

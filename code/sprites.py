@@ -27,13 +27,12 @@ class AnimatedSprite(Sprite):
     def update(self, dt):
         self.animate(dt)
 
-
 class ShootingStarSprite(AnimatedSprite):
     def __init__(self, pos, frames, groups, z = Z_LAYERS['bg_back']):
         for key, elem in frames.items():
             elem.set_alpha(125)  # 50% alpha
         super().__init__(pos, frames, groups, z, animation_speed=4)
-        self.speed = randint(250, 300)
+        self.speed = randint(450, 650)
         self.direction = vector(-1,1)
 
     def animate(self, dt):
